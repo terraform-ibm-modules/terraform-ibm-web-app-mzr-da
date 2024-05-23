@@ -10,7 +10,7 @@ import (
 
 // Use existing resource group
 const resourceGroup = "geretain-test-resources"
-const advancedExampleDir = "examples/advanced"
+const advancedExampleDir = "examples/basic"
 
 func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
 	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{

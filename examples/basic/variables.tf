@@ -20,14 +20,19 @@ variable "prefix" {
   default     = "basic"
 }
 
-variable "resource_group" {
+variable "ssh_key" {
+  description = "Public SSH Key for VSI creation. Must be a valid SSH key that does not already exist in the deployment region."
   type        = string
-  description = "The name of an existing resource group to provision resources in to. If not set a new resource group will be created using the prefix variable"
-  default     = null
 }
 
-variable "resource_tags" {
-  type        = list(string)
-  description = "Optional list of tags to be added to created resources"
-  default     = []
+variable "ssh_private_key" {
+  description = "Private SSH key (RSA format) that is paired with the public ssh key."
+  type        = string
+  sensitive   = true
+}
+
+variable "sample_application" {
+  description = "Apply the sample web application to the pattern."
+  type        = bool
+  sensitive   = false
 }
