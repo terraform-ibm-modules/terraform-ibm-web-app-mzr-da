@@ -41,7 +41,7 @@ variable "ssh_private_key" {
 variable "sample_application" {
   description = "Apply the sample web application to the pattern."
   type        = bool
-  sensitive   = false
+  default     = false
 }
 
 ############################################################################
