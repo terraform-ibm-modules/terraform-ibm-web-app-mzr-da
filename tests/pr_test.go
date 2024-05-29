@@ -12,8 +12,6 @@ import (
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
 )
 
-// Use existing resource group
-const resourceGroup = "geretain-test-resources"
 const defaultExampleTerraformDir = "solutions/e2e"
 
 var sharedInfoSvc *cloudinfo.CloudInfoService
@@ -26,17 +24,16 @@ func TestMain(m *testing.M) {
 	rsaKeyPair, _ := ssh.GenerateRSAKeyPairE(tSsh, 4096)
 	sshPublicKey := strings.TrimSuffix(rsaKeyPair.PublicKey, "\n") // removing trailing new lines
 	sshPrivateKey := "<<EOF\n" + rsaKeyPair.PrivateKey + "EOF"
-	os.Setenv("TF_VAR_ssh_public_key", sshPublicKey)
+	os.Setenv("TF_VAR_ssh_key", sshPublicKey)
 	os.Setenv("TF_VAR_ssh_private_key", sshPrivateKey)
 	os.Exit(m.Run())
 }
 
 func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
 	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
-		Testing:       t,
-		TerraformDir:  dir,
-		Prefix:        prefix,
-		ResourceGroup: resourceGroup,
+		Testing:      t,
+		TerraformDir: dir,
+		Prefix:       prefix,
 	})
 	return options
 }
