@@ -41,7 +41,7 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 func TestRunDefaultExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mod-template", defaultExampleTerraformDir)
+	options := setupOptions(t, "webapp", defaultExampleTerraformDir)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
@@ -51,7 +51,7 @@ func TestRunDefaultExample(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mod-template-upg", defaultExampleTerraformDir)
+	options := setupOptions(t, "webapp-upg", defaultExampleTerraformDir)
 
 	output, err := options.RunTestUpgrade()
 	if !options.UpgradeTestSkipped {
