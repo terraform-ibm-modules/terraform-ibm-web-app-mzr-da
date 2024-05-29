@@ -54,6 +54,7 @@ resource "ibm_resource_instance" "secrets_manager" {
   plan              = var.sm_service_plan
   location          = local.sm_region
   resource_group_id = local.sm_rg_id
+  tags              = var.resource_tags
   timeouts {
     create = "20m" # Extending provisioning time to 20 minutes
   }
