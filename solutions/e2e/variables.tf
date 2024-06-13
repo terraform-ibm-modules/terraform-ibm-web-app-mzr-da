@@ -26,7 +26,7 @@ variable "prefix" {
 
 variable "resource_tags" {
   type        = list(string)
-  description = "Optional list of tags to be added to created resources"
+  description = "Optional list of tags to be added to the Key Protect instance. Only used if 'create_key_protect_instance' is true."
   default     = []
 }
 
