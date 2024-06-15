@@ -1,0 +1,32 @@
+#!/bin/bash
+
+yum update -y
+
+# Install pacakges
+yum install nodejs -y
+
+# Pull down the web app code
+curl -X GET "https://s3.direct.us-south.cloud-object-storage.appdomain.cloud/cos-web-resliency-app/webapp-code.tar.gz" --output /root/webapp-code.tar.gz
+tar -xvzf /root/webapp-code.tar.gz -C /root
+
+# Need to put the Postgres servers and inject it into the script
+
+cat > /etc/systemd/system/webapp.service << EOF
+[Unit]
+Description=project
+
+[Service]
+ExecStart=/usr/bin/node /root/webapp-code/app.js
+Restart=always
+StandardOutput=syslog
+Environment=DATABASE_IPS="${PG_DATABASE_IPS}"
+Environment=DATABASE_PORT="${PG_DATABASE_PORT}"
+Environment=DATABASE_PASSWORD="${PG_DATABASE_PASSWORD}"
+Environment=DATABASE_USER="${PG_DATABASE_USER}"
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl start webapp

@@ -1,0 +1,129 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - nginx
+runcmd:
+  - yum update -y
+  - yum install nginx -y
+  - mkdir /usr/share/nginx/html/pattern
+  - |
+    set -x
+    (
+      while [ ! -f /root/nginx.conf ]; do
+        sleep 1
+      done
+      cat > /etc/nginx/nginx.conf < /root/nginx.conf
+    ) &
+  - |
+    set -x
+    (
+      while [ ! -f /root/index.html ]; do
+        sleep 1
+      done
+      mv /root/index.html /usr/share/nginx/html/pattern/
+    ) &
+  - systemctl start nginx
+  - systemctl enable nginx
+write_files:
+  # Converted to base64 since Cloudflare thinks it is a javacript injection
+  # <html>
+  #   <h1> 3 Tier-Web Application pattern </h1>
+  #   <body>
+  #     <p> Congratulations!!  You have deployed the 3 tier web application pattern.  </p>
+  #     <p> Below is an example of calling a backend postgresql database </p>
+  #     <p id="demo"></p>
+  #     <Taken out due to Cloudflare>
+  #       fetch ('/webapp/students')
+  #       .then(response => response.json())
+  #       .then(data => document.getElementById("demo").innerHTML = JSON.stringify(data, null, 4))
+  #     </Taken out due to Cloudflare>
+  #   </body>
+  # </html>
+  - content: |
+      PGh0bWw+CiAgPGgxPiAzIFRpZXItV2ViIEFwcGxpY2F0aW9uIHBhdHRlcm4gPC9oMT4KICA8Ym9k
+      eT4KICAgIDxwPiBDb25ncmF0dWxhdGlvbnMhISAgWW91IGhhdmUgZGVwbG95ZWQgdGhlIDMgdGll
+      ciB3ZWIgYXBwbGljYXRpb24gcGF0dGVybi4gIDwvcD4KICAgIDxwPiBCZWxvdyBpcyBhbiBleGFt
+      cGxlIG9mIGNhbGxpbmcgYSBiYWNrZW5kIHBvc3RncmVzcWwgZGF0YWJhc2UgPC9wPgogICAgPHAg
+      aWQ9ImRhdGEiPjwvcD4KICAgIDxzY3JpcHQ+CiAgICAgIGRhdGEgPSBmZXRjaCAoJy9hcGkvc3R1
+      ZGVudHMnKQogICAgICAudGhlbihyZXNwb25zZSA9PiByZXNwb25zZS5qc29uKCkpLnRoZW4oZCA9
+      PiBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZGF0YSIpLmlubmVySFRNTCA9IGNyZWF0ZV90YWJs
+      ZShkLnJlc3VsdCkpCgogICAgIGZ1bmN0aW9uIGNyZWF0ZV90YWJsZShkYXRhKSB7CiAgICAgICB2
+      YXIgaHRtbCA9ICI8dGFibGUgYm9yZGVyPT1cIjFcIj48dHI+IjsKICAgICAgIGZvciAoa2V5IGlu
+      IGRhdGFbMF0pIHsKCSBodG1sICs9ICc8dGQ+JyArIGtleSArICc8L3RkPic7CiAgICAgICB9CiAg
+      ICAgICBodG1sICs9ICI8L3RyPiI7CiAgICAgICBmb3IgKHZhciBpID0gMDsgaSA8IGRhdGEubGVu
+      Z3RoOyBpKyspIHsKCSBodG1sICs9ICc8dHI+JzsKCSBmb3IgKGtleSBpbiBkYXRhW2ldKSB7CiAg
+      CSAgIGh0bWwgKz0gJzx0ZD4nICsgZGF0YVtpXVtrZXldICsgJzwvdGQ+JzsKICAgICAgICAgfQoJ
+      IGh0bWwgKz0gJzwvdHI+JzsKICAgICAgIH0KICAgICAgIGh0bWwgKz0gIjwvdGFibGU+IjsKCiAg
+      ICAgICByZXR1cm4gaHRtbDsKICAgICB9CiAgICA8L3NjcmlwdD4KICA8L2JvZHk+CjwvaHRtbD4K
+    encoding: base64
+    path: /root/index.html
+  - content: |
+      # For more information on configuration, see:
+      #   * Official English Documentation: http://nginx.org/en/docs/
+      #   * Official Russian Documentation: http://nginx.org/ru/docs/
+
+      user nginx;
+      worker_processes auto;
+      error_log /var/log/nginx/error.log notice;
+      pid /run/nginx.pid;
+
+      # Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+      include /usr/share/nginx/modules/*.conf;
+
+      events {
+          worker_connections 1024;
+      }
+
+      http {
+          log_format  main  ' -  [] "" '
+                            '  "" '
+                            '"" ""';
+
+          access_log  /var/log/nginx/access.log  main;
+
+          sendfile            on;
+          tcp_nopush          on;
+          keepalive_timeout   65;
+          types_hash_max_size 4096;
+
+          include             /etc/nginx/mime.types;
+          default_type        application/octet-stream;
+
+          # Load modular configuration files from the /etc/nginx/conf.d directory.
+          # See http://nginx.org/en/docs/ngx_core_module.html#include
+          # for more information.
+          include /etc/nginx/conf.d/*.conf;
+
+          upstream webapp {
+            server ${load_balancer}:3000;
+          }
+
+          server {
+              listen       80;
+              listen       [::]:80;
+              server_name  _;
+              root         /usr/share/nginx/html;
+
+              # Load configuration files for the default server block.
+              include /etc/nginx/default.d/*.conf;
+
+              location / {
+                root /usr/share/nginx/html/pattern;
+                try_files $uri /index.html;
+              }
+
+              location /api/ {
+                proxy_pass http://webapp/;
+            }
+
+              error_page 404 /404.html;
+              location = /404.html {
+              }
+
+              error_page 500 502 503 504 /50x.html;
+              location = /50x.html {
+              }
+          }
+      }
+    path: /root/nginx.conf

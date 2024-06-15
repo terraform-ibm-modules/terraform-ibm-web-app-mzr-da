@@ -1,0 +1,4 @@
+CREATE USER testuser WITH PASSWORD '${PASSWORD}';
+CREATE TABLE student_details (first_name VARCHAR(15), last_name VARCHAR(15) , age INTEGER );
+COPY student_details FROM '/tmp/data.csv' DELIMITER ',' CSV HEADER;
+ALTER TABLE student_details OWNER TO testuser;

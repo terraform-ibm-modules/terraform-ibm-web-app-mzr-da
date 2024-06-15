@@ -1,0 +1,21 @@
+#!/bin/bash
+
+yum install jq -y
+
+# Find the data block object
+blk=$(lsblk -f -J | jq -r '.blockdevices[] | select(.fstype==null and (.children | length) == 0)')
+echo "Found the following data block: ${blk}"
+
+if [[ "X_${blk}" == "X_" ]]; then
+   echo "Did not find a data volume to partition and mount"
+   exit 1;
+fi
+
+name=$(jq -r '.name' <<< "${blk}")
+
+/sbin/mkfs -t ext4 /dev/$name
+
+PG_MOUNT_POINT="/var/lib/pgsql/pgmount"
+mkdir -p $PG_MOUNT_POINT
+
+mount /dev/$name $PG_MOUNT_POINT
