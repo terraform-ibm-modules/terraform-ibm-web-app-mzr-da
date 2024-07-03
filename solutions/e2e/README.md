@@ -36,7 +36,7 @@ https://terraform-ibm-modules.github.io/documentation/#/implementation-guideline
 <!-- Replace this heading with the name of the root level module (the repo name) -->
 ## terraform-ibm-web-app-mzr-da
 
-![pattern-vpc-vsi](./images/VPC-Resiliency-da.drawio.png)
+![pattern-vpc-vsi](../../images/VPC-Resiliency-da.drawio.png)
 
 ### Usage
 
