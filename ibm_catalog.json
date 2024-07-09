@@ -1,0 +1,286 @@
+{
+  "products": [
+    {
+      "name": "deploy-arch-ibm-web-app-mzr",
+      "label": "Web App Multi-Zone Resiliency",
+      "product_kind": "solution",
+      "tags": [
+        "virtualservers",
+        "autoscale",
+        "vpc",
+        "terraform",
+        "reference_architecture",
+        "solution"
+      ],
+      "keywords": [
+        "vpc",
+        "IaC",
+        "infrastructure as code",
+        "terraform",
+        "solution",
+        "vsi",
+        "virtual server instance",
+        "autoscale",
+        "web-app"
+      ],
+      "short_description": "Creates a 3-tier multi-zone web application infrastructure to run your workloads on a VPC network",
+      "long_description": "The web app multi-zone resiliency pattern provides a solution design for a 3-tier web architecture deployment that meets high availability requirements for enterprise workloads. It uses cloud platform capabilities to deploy resilient applications on Virtual Servers for VPC.",
+      "offering_docs_url": "https://cloud.ibm.com/docs/pattern-vpc-vsi-multizone-resiliency?topic=pattern-vpc-vsi-multizone-resiliency-overview",
+      "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-landing-zone/main/.docs/images/deploy-arch-slz-vsi-lt.svg",
+      "provider_name": "Cloud Complex Solutions Team",
+      "features": [
+        {
+          "description": "Creates and configures one or more virtual servers to handle workloads.\n",
+          "title": "Creates virtual servers for workloads"
+        },
+        {
+          "description": "Creates and configures one or more auto scale virtual servers to handle workloads.\n",
+          "title": "Creates auto scale virtual servers for workloads"
+        },
+        {
+          "description": "Configures the subnets for the VSIs and specifies which subnets the instances are deployed in.\n",
+          "title": "Configures subnets"
+        },
+        {
+          "description": "Associates security groups with the VSIs to control inbound and outbound traffic to instances.\n",
+          "title": "Associates security groups"
+        },
+        {
+          "description": "Provisions and manages SSH keys for the VSIs so that you can securely administer the instances.\n",
+          "title": "Provisions SSH keys"
+        }
+      ],
+      "flavors": [
+        {
+          "label": "Standard",
+          "name": "standard",
+          "install_type": "fullstack",
+          "working_directory": "solutions/e2e",
+          "configuration": [
+            {
+              "key": "prefix",
+              "type": "string",
+              "description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when existing this solution multiple times.",
+              "default_value": "rag",
+              "required": true
+            },
+            {
+              "custom_config": {
+                "config_constraints": {
+                  "generationType": "2"
+                },
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "type": "vpc_region"
+              },
+              "key": "region",
+              "required": true
+            },
+            {
+              "key": "ibmcloud_api_key",
+              "type": "password",
+              "description": "The API Key used to provision all resources created in this solution.",
+              "required": true
+            },
+            {
+              "key": "ssh_key",
+              "type": "multiline_secure_value",
+              "display_name": "Multiline secure value",
+              "required": true,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "type": "multiline_secure_value"
+              }
+            },
+            {
+              "key": "ssh_private_key",
+              "type": "multiline_secure_value",
+              "display_name": "Multiline secure value",
+              "required": true,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "type": "multiline_secure_value"
+              }
+            },
+            {
+              "default_value": false,
+              "key": "sample_application",
+              "type": "boolean"
+            },
+            {
+              "key": "use_sm"
+            },
+            {
+              "key": "existing_sm_instance_guid"
+            },
+            {
+              "key": "existing_sm_instance_region"
+            },
+            {
+              "key": "sm_instance_rg_name"
+            },
+            {
+              "key": "sm_instance_rg_existing"
+            },
+            {
+              "key": "sm_service_plan"
+            },
+            {
+              "key": "root_ca_name"
+            },
+            {
+              "key": "root_ca_common_name"
+            },
+            {
+              "key": "intermediate_ca_name"
+            },
+            {
+              "key": "certificate_template_name"
+            },
+            {
+              "key": "cert_common_name"
+            },
+            {
+              "key": "create_s2s_lb_to_sm"
+            },
+            {
+              "key": "web_machine_type"
+            },
+            {
+              "key": "web_os_profile"
+            },
+            {
+              "key": "web_boot_volume_encryption_key_suffix"
+            },
+            {
+              "key": "web_block_storage_volumes"
+            },
+            {
+              "key": "web_instance_count"
+            },
+            {
+              "key": "web_application_port"
+            },
+            {
+              "key": "web_application_port"
+            },
+            {
+              "key": "web_load_balancers"
+            },
+            {
+              "key": "web_group_managers"
+            },
+            {
+              "key": "app_machine_type"
+            },
+            {
+              "key": "app_os_profile"
+            },
+            {
+              "key": "app_boot_volume_encryption_key_suffix"
+            },
+            {
+              "key": "app_security_group"
+            },
+            {
+              "key": "app_block_storage_volumes"
+            },
+            {
+              "key": "app_instance_count"
+            },
+            {
+              "key": "app_application_port"
+            },
+            {
+              "key": "app_load_balancers"
+            },
+            {
+              "key": "app_group_managers"
+            },
+            {
+              "key": "data_machine_type"
+            },
+            {
+              "key": "data_os_profile"
+            },
+            {
+              "key": "data_boot_volume_encryption_key_suffix"
+            },
+            {
+              "key": "data_vsi_per_subnet"
+            },
+            {
+              "key": "data_security_group"
+            },
+            {
+              "key": "data_block_storage_volumes"
+            }
+          ],
+          "iam_permissions": [
+            {
+              "role_crns": ["crn:v1:bluemix:public:iam::::serviceRole:Manager"],
+              "service_name": "appid"
+            },
+            {
+              "role_crns": ["crn:v1:bluemix:public:iam::::serviceRole:Manager"],
+              "service_name": "cloud-object-storage"
+            },
+            {
+              "role_crns": ["crn:v1:bluemix:public:iam::::serviceRole:Manager"],
+              "service_name": "hs-crypto"
+            },
+            {
+              "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
+              "service_name": "iam-identity"
+            },
+            {
+              "role_crns": ["crn:v1:bluemix:public:iam::::serviceRole:Manager"],
+              "service_name": "kms"
+            },
+            {
+              "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
+              "service_name": "is.vpc"
+            }
+          ],
+          "architecture": {
+            "descriptions": "",
+            "features": [
+              {
+                "title": "Separate VPC for management",
+                "description": "Yes"
+              },
+              {
+                "title": "Separate VPC for workloads",
+                "description": "Yes"
+              },
+              {
+                "title": "Virtual Server Instances for every subnet",
+                "description": "Yes"
+              },
+              {
+                "title": "Increases security with Key Management",
+                "description": "Yes"
+              },
+              {
+                "title": "Reduces failure events by using multizone regions",
+                "description": "Yes"
+              }
+            ],
+            "diagrams": [
+              {
+                "diagram": {
+                  "caption": "Web App Multi-Zone Resiliency - Standard variation",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-web-app-mzr-da/main/images/VPC-Resiliency-da.drawio.svg",
+                  "type": "image/svg+xml"
+                },
+                "description": "The Standard variation of the Web App Multi-Zone Resiliency deployable architecture."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
