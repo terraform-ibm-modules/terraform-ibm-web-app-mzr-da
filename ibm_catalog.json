@@ -23,7 +23,7 @@
         "autoscale",
         "web-app"
       ],
-      "short_description": "Creates a 3-tier multi-zone web application infrastructure to run your workloads on a VPC network",
+      "short_description": "Creates a 3-tier multi-zone resilient web application infrastructure to run your workloads on a VPC network",
       "long_description": "The web app multi-zone resiliency pattern provides a solution design for a 3-tier web architecture deployment that meets high availability requirements for enterprise workloads. It uses cloud platform capabilities to deploy resilient applications on Virtual Servers for VPC.",
       "offering_docs_url": "https://cloud.ibm.com/docs/pattern-vpc-vsi-multizone-resiliency?topic=pattern-vpc-vsi-multizone-resiliency-overview",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-landing-zone/main/.docs/images/deploy-arch-slz-vsi-lt.svg",
