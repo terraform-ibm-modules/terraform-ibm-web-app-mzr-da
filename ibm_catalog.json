@@ -10,7 +10,8 @@
         "vpc",
         "terraform",
         "reference_architecture",
-        "solution"
+        "solution",
+        "ibm_created"
       ],
       "keywords": [
         "vpc",
