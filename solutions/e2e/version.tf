@@ -3,11 +3,11 @@ terraform {
   required_providers {
     ibm = {
       source  = "IBM-Cloud/ibm"
-      version = ">= 1.60.0"
+      version = ">= 1.68.0"
     }
     random = {
       source  = "hashicorp/random"
-      version = "3.6.0"
+      version = "3.6.2"
     }
     null = {
       source  = "hashicorp/null"
