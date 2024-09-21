@@ -7,7 +7,7 @@
 ##############################################################################
 
 module "landing_zone" {
-  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi?ref=v5.20.2"
+  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi?ref=v5.33.0"
   prefix               = var.prefix
   region               = var.region
   ibmcloud_api_key     = var.ibmcloud_api_key
@@ -40,7 +40,7 @@ module "sm_resource_group" {
   count = var.sm_instance_rg_existing || (!var.sm_instance_rg_existing && var.sm_instance_rg_name != null) ? 1 : 0
 
   source  = "terraform-ibm-modules/resource-group/ibm"
-  version = "1.1.5"
+  version = "1.1.6"
 
   resource_group_name          = !var.sm_instance_rg_existing ? var.sm_instance_rg_name : null
   existing_resource_group_name = var.sm_instance_rg_existing ? var.sm_instance_rg_name : null
@@ -66,7 +66,7 @@ module "private_secret_engine" {
   depends_on                = [ibm_resource_instance.secrets_manager]
   count                     = (var.use_sm && var.existing_sm_instance_guid == null) ? 1 : 0
   source                    = "terraform-ibm-modules/secrets-manager-private-cert-engine/ibm"
-  version                   = "1.2.2"
+  version                   = "1.3.3"
   secrets_manager_guid      = local.sm_guid
   region                    = local.sm_region
   root_ca_name              = var.root_ca_name
@@ -83,7 +83,7 @@ module "private_secret_engine" {
 # Create a secret group to place the certificate in
 module "secrets_manager_group" {
   source                   = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
-  version                  = "1.1.4"
+  version                  = "1.2.2"
   count                    = var.use_sm ? 1 : 0
   region                   = local.sm_region
   secrets_manager_guid     = local.sm_guid
@@ -98,7 +98,7 @@ module "secrets_manager_group" {
 module "secrets_manager_private_certificate" {
   depends_on             = [module.private_secret_engine]
   source                 = "terraform-ibm-modules/secrets-manager-private-cert/ibm"
-  version                = "1.1.3"
+  version                = "1.3.1"
   count                  = var.use_sm ? 1 : 0
   cert_name              = "${var.prefix}-cts-vpn-private-cert"
   cert_description       = "Example private cert"
