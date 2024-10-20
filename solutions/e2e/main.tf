@@ -7,7 +7,7 @@
 ##############################################################################
 
 module "landing_zone" {
-  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi?ref=v5.20.2"
+  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi?ref=v6.1.1"
   prefix               = var.prefix
   region               = var.region
   ibmcloud_api_key     = var.ibmcloud_api_key
