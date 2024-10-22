@@ -28,11 +28,11 @@ data "ibm_is_image" "app_is_image" {
 module "app_tier_autoscale" {
   source                        = "github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale?ref=v1.0.2"
   prefix                        = "${var.prefix}-app-tier"
-  resource_group_id             = local.vpc_data.resource_group_id
+  resource_group_id             = local.vpc_data.vpc_data.resource_group
   zone                          = "${var.region}-1"
   image_id                      = data.ibm_is_image.app_is_image.id
   subnets                       = local.app_tier_subnets
-  vpc_id                        = local.vpc_data.id
+  vpc_id                        = local.vpc_data.vpc_id
   placement_group_id            = null
   machine_type                  = var.app_machine_type
   ssh_key_ids                   = [module.landing_zone.ssh_key_data[0].id]
