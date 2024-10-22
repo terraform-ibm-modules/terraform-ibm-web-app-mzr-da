@@ -7,10 +7,9 @@
 ##############################################################################
 
 module "landing_zone" {
-  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi?ref=v5.33.0"
+  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module?ref=v6.1.2"
   prefix               = var.prefix
   region               = var.region
-  ibmcloud_api_key     = var.ibmcloud_api_key
   ssh_public_key       = var.ssh_key
   override_json_string = templatefile("${path.module}/override.tftpl", { prefix = var.prefix })
 }
