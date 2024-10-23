@@ -35,10 +35,10 @@ resource "random_password" "password" {
 
 module "data_tier_vsi" {
   source                        = "terraform-ibm-modules/landing-zone-vsi/ibm"
-  version                       = "4.0.0"
-  resource_group_id             = local.vpc_data.resource_group_id
+  version                       = "4.2.0"
+  resource_group_id             = local.vpc_data.vpc_data.resource_group
   prefix                        = "${var.prefix}-data-vsi"
-  vpc_id                        = local.vpc_data.id
+  vpc_id                        = local.vpc_data.vpc_id
   subnets                       = local.data_tier_subnets
   image_id                      = data.ibm_is_image.data_is_image.id
   ssh_key_ids                   = [module.landing_zone.ssh_key_data[0].id]

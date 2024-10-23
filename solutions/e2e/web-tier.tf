@@ -3,9 +3,9 @@ locals {
 
   ## VPC data for workload
   vpc_data = flatten([
-    for vpc in module.landing_zone.vpc_resource_list : [
+    for vpc in module.landing_zone.vpc_data : [
       vpc
-    ] if strcontains(vpc.name, local.workload_vpc)
+    ] if strcontains(vpc.vpc_name, local.workload_vpc)
   ])[0]
 
   web_tier_subnets = flatten([
@@ -36,13 +36,13 @@ data "ibm_is_image" "web_is_image" {
 
 module "web_tier_autoscale" {
   depends_on                    = [ibm_iam_authorization_policy.s2s_lb_to_sm]
-  source                        = "github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale?ref=v1.0.0"
+  source                        = "github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale?ref=v1.0.2"
   prefix                        = "${var.prefix}-web-tier"
-  resource_group_id             = local.vpc_data.resource_group_id
+  resource_group_id             = local.vpc_data.vpc_data.resource_group
   zone                          = "${var.region}-1"
   image_id                      = data.ibm_is_image.web_is_image.id
   subnets                       = local.web_tier_subnets
-  vpc_id                        = local.vpc_data.id
+  vpc_id                        = local.vpc_data.vpc_id
   placement_group_id            = null
   machine_type                  = var.web_machine_type
   ssh_key_ids                   = [module.landing_zone.ssh_key_data[0].id]
