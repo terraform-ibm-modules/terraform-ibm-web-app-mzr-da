@@ -51,7 +51,7 @@ func TestRunDefaultExample(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "webapp-upg", defaultExampleTerraformDir)
+	options := setupOptions(t, "webapp-u", defaultExampleTerraformDir)
 
 	output, err := options.RunTestUpgrade()
 	if !options.UpgradeTestSkipped {
