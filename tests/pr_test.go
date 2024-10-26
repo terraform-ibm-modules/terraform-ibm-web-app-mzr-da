@@ -26,6 +26,9 @@ func TestMain(m *testing.M) {
 	sshPrivateKey := "<<EOF\n" + rsaKeyPair.PrivateKey + "EOF"
 	os.Setenv("TF_VAR_ssh_key", sshPublicKey)
 	os.Setenv("TF_VAR_ssh_private_key", sshPrivateKey)
+
+	// use trial instance for tests
+	os.Setenv("TF_VAR_sm_service_plan", "trial")
 	os.Exit(m.Run())
 }
 
