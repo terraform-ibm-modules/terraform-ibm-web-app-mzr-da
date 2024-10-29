@@ -8,6 +8,7 @@ import (
 
 	"github.com/gruntwork-io/terratest/modules/ssh"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/cloudinfo"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
 )
@@ -18,18 +19,21 @@ var sharedInfoSvc *cloudinfo.CloudInfoService
 
 func TestMain(m *testing.M) {
 	sharedInfoSvc, _ = cloudinfo.NewCloudInfoServiceFromEnv("TF_VAR_ibmcloud_api_key", cloudinfo.CloudInfoServiceOptions{})
+	os.Exit(m.Run())
+}
 
-	// creating ssh keys
+func rsaKeyPair(t *testing.T) (string, string) {
+
 	tSsh := new(testing.T)
-	rsaKeyPair, _ := ssh.GenerateRSAKeyPairE(tSsh, 4096)
+	rsaKeyPair, keyErr := ssh.GenerateRSAKeyPairE(tSsh, 4096)
+
+	// if error producing key (very unexpected) fail test immediately
+	require.NoError(t, keyErr, "SSH Keygen failed, without ssh keys test cannot continue")
+
 	sshPublicKey := strings.TrimSuffix(rsaKeyPair.PublicKey, "\n") // removing trailing new lines
 	sshPrivateKey := "<<EOF\n" + rsaKeyPair.PrivateKey + "EOF"
-	os.Setenv("TF_VAR_ssh_key", sshPublicKey)
-	os.Setenv("TF_VAR_ssh_private_key", sshPrivateKey)
 
-	// use trial instance for tests
-	os.Setenv("TF_VAR_sm_service_plan", "trial")
-	os.Exit(m.Run())
+	return sshPublicKey, sshPrivateKey
 }
 
 func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
@@ -38,6 +42,15 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 		TerraformDir: dir,
 		Prefix:       prefix,
 	})
+
+	var sshPublicKey, sshPrivateKey = rsaKeyPair(t)
+
+	options.TerraformVars = map[string]interface{}{
+		"ssh_key":         sshPublicKey,
+		"ssh_private_key": sshPrivateKey, // pragma: allowlist secret
+		"sm_service_plan": "trial",
+	}
+
 	return options
 }
 
