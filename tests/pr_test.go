@@ -14,6 +14,10 @@ import (
 
 const defaultExampleTerraformDir = "solutions/e2e"
 
+// Need to use different regions per test to ensure there is no clash in SSH keys as ssh key value has to be unique per VPC region
+const region1 = "us-south"
+const region2 = "us-east"
+
 var sharedInfoSvc *cloudinfo.CloudInfoService
 
 func TestMain(m *testing.M) {
@@ -26,14 +30,18 @@ func TestMain(m *testing.M) {
 	sshPrivateKey := "<<EOF\n" + rsaKeyPair.PrivateKey + "EOF"
 	os.Setenv("TF_VAR_ssh_key", sshPublicKey)
 	os.Setenv("TF_VAR_ssh_private_key", sshPrivateKey)
+
+	// use trial instance for tests
+	os.Setenv("TF_VAR_sm_service_plan", "trial")
 	os.Exit(m.Run())
 }
 
-func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
+func setupOptions(t *testing.T, prefix string, dir string, region string) *testhelper.TestOptions {
 	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
 		Testing:      t,
 		TerraformDir: dir,
 		Prefix:       prefix,
+		Region:       region,
 	})
 	return options
 }
@@ -41,7 +49,7 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 func TestRunDefaultExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "webapp", defaultExampleTerraformDir)
+	options := setupOptions(t, "webapp", defaultExampleTerraformDir, region1)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
@@ -51,7 +59,7 @@ func TestRunDefaultExample(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "webapp-upg", defaultExampleTerraformDir)
+	options := setupOptions(t, "webapp-u", defaultExampleTerraformDir, region2)
 
 	output, err := options.RunTestUpgrade()
 	if !options.UpgradeTestSkipped {
