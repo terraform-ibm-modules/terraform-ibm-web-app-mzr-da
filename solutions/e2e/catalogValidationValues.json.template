@@ -1,0 +1,9 @@
+{
+  "ibmcloud_api_key": $VALIDATION_APIKEY,
+  "prefix": $PREFIX,
+  "region": "us-south",
+  "ssh_key": $SSH_PUB_KEY,
+  "ssh_private_key": $SSH_PRV_KEY,
+  "resource_tags": $TAGS,
+  "sm_service_plan": "trial"
+}

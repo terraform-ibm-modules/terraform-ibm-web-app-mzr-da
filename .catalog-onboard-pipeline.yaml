@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+offerings:
+  - name: deploy-arch-ibm-web-app-mzr
+    kind: solution
+    catalog_id: 91645117-944b-436e-bcea-aabb73f8a5a1
+    offering_id: 75982e34-7b50-4945-96d9-4f686d669fc9
+    variations:
+      - name: standard
+        mark_ready: true
+        install_type: fullstack
+        validation_type: schematics
