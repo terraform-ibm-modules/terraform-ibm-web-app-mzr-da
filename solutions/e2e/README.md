@@ -105,7 +105,7 @@ statement instead the previous block.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.71.2 |
+| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.71.3 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.3 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | 3.6.3 |
 
@@ -126,14 +126,14 @@ statement instead the previous block.
 
 | Name | Type |
 |------|------|
-| [ibm_iam_authorization_policy.s2s_lb_to_sm](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.71.2/docs/resources/iam_authorization_policy) | resource |
-| [ibm_resource_instance.secrets_manager](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.71.2/docs/resources/resource_instance) | resource |
+| [ibm_iam_authorization_policy.s2s_lb_to_sm](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.71.3/docs/resources/iam_authorization_policy) | resource |
+| [ibm_resource_instance.secrets_manager](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.71.3/docs/resources/resource_instance) | resource |
 | [null_resource.primary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.2.3/docs/resources/resource) | resource |
 | [null_resource.secondary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.2.3/docs/resources/resource) | resource |
 | [random_password.password](https://registry.terraform.io/providers/hashicorp/random/3.6.3/docs/resources/password) | resource |
-| [ibm_is_image.app_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.71.2/docs/data-sources/is_image) | data source |
-| [ibm_is_image.data_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.71.2/docs/data-sources/is_image) | data source |
-| [ibm_is_image.web_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.71.2/docs/data-sources/is_image) | data source |
+| [ibm_is_image.app_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.71.3/docs/data-sources/is_image) | data source |
+| [ibm_is_image.data_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.71.3/docs/data-sources/is_image) | data source |
+| [ibm_is_image.web_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.71.3/docs/data-sources/is_image) | data source |
 
 ### Inputs
 
