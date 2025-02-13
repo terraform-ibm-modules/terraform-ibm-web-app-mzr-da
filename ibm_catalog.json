@@ -120,6 +120,9 @@
               "type": "boolean"
             },
             {
+              "key": "resource_tags"
+            },
+            {
               "key": "use_sm"
             },
             {
@@ -174,7 +177,7 @@
               "key": "web_application_port"
             },
             {
-              "key": "web_application_port"
+              "key": "web_security_group"
             },
             {
               "key": "web_load_balancers"
