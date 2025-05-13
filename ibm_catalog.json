@@ -233,28 +233,37 @@
           ],
           "iam_permissions": [
             {
-              "role_crns": ["crn:v1:bluemix:public:iam::::serviceRole:Manager"],
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+              ],
               "service_name": "cloud-object-storage"
             },
             {
-              "role_crns": ["crn:v1:bluemix:public:iam::::serviceRole:Manager"],
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+              ],
               "service_name": "hs-crypto"
             },
             {
-              "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
               "service_name": "iam-identity"
             },
             {
-              "role_crns": ["crn:v1:bluemix:public:iam::::serviceRole:Manager"],
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+              ],
               "service_name": "kms"
             },
             {
-              "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
               "service_name": "is.vpc"
             }
           ],
           "architecture": {
-            "descriptions": "",
             "features": [
               {
                 "title": "Separate VPC for management",
