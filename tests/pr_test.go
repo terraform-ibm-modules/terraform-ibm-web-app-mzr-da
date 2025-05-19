@@ -28,11 +28,17 @@ func TestMain(m *testing.M) {
 	rsaKeyPair, _ := ssh.GenerateRSAKeyPairE(tSsh, 4096)
 	sshPublicKey := strings.TrimSuffix(rsaKeyPair.PublicKey, "\n") // removing trailing new lines
 	sshPrivateKey := "<<EOF\n" + rsaKeyPair.PrivateKey + "EOF"
-	os.Setenv("TF_VAR_ssh_key", sshPublicKey)
-	os.Setenv("TF_VAR_ssh_private_key", sshPrivateKey)
+	if err := os.Setenv("TF_VAR_ssh_key", sshPublicKey); err != nil {
+		tSsh.Fatalf("failed to set TF_VAR_ssh_key: %v", err) // pragma: allowlist secret
+	}
+	if err := os.Setenv("TF_VAR_ssh_private_key", sshPrivateKey); err != nil {
+		tSsh.Fatalf("failed to set TF_VAR_ssh_private_key: %v", err) // pragma: allowlist secret
+	}
 
 	// use trial instance for tests
-	os.Setenv("TF_VAR_sm_service_plan", "trial")
+	if err := os.Setenv("TF_VAR_sm_service_plan", "trial"); err != nil {
+		tSsh.Fatalf("failed to set TF_VAR_sm_service_plan: %v", err)
+	}
 	os.Exit(m.Run())
 }
 
