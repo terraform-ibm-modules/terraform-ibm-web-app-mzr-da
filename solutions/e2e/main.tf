@@ -47,6 +47,7 @@ module "sm_resource_group" {
 
 # Create a new SM instance if not using an existing one
 resource "ibm_resource_instance" "secrets_manager" {
+  provider          = ibm.ibm-sm
   count             = (var.use_sm && var.existing_sm_instance_guid == null) ? 1 : 0
   name              = "${var.prefix}-sm-instance"
   service           = "secrets-manager"
@@ -54,10 +55,12 @@ resource "ibm_resource_instance" "secrets_manager" {
   location          = local.sm_region
   resource_group_id = local.sm_rg_id
   tags              = var.resource_tags
+  parameters = {
+    "allowed_network" = "public-and-private"
+  }
   timeouts {
     create = "20m" # Extending provisioning time to 20 minutes
   }
-  provider = ibm.ibm-sm
 }
 
 # Configure private cert engine if provisioning a new SM instance
