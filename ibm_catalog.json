@@ -5,13 +5,15 @@
       "label": "Web App Multi-Zone Resiliency",
       "product_kind": "solution",
       "tags": [
+        "ibm_created",
+        "target_terraform",
+        "terraform",
+        "solution",
         "virtualservers",
         "autoscale",
         "vpc",
-        "terraform",
         "reference_architecture",
-        "solution",
-        "ibm_created"
+        "converged_infra"
       ],
       "keywords": [
         "vpc",
