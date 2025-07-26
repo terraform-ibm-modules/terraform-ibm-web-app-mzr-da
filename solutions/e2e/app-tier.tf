@@ -26,7 +26,7 @@ data "ibm_is_image" "app_is_image" {
 }
 
 module "app_tier_autoscale" {
-  source                        = "github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale?ref=v1.0.2"
+  source                        = "github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale?ref=v1.0.3"
   prefix                        = "${var.prefix}-app-tier"
   resource_group_id             = local.vpc_data.vpc_data.resource_group
   zone                          = "${var.region}-1"
