@@ -298,7 +298,8 @@
                 "description": "The Standard variation of the Web App Multi-Zone Resiliency deployable architecture."
               }
             ]
-          }
+          },
+          "terraform_version": "1.10.5"
         }
       ]
     }
