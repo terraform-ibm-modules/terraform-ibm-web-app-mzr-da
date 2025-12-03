@@ -659,6 +659,7 @@
       "machine_type": "cx2-4x8",
       "name": "management-bastion-server",
       "resource_group": "${prefix}-management-rg",
+      "use_legacy_network_interface": ${use_legacy_network_interface},
       "security_group": {
         "name": "${prefix}-management",
         "rules": [
