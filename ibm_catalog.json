@@ -227,6 +227,9 @@
               "key": "data_vsi_per_subnet"
             },
             {
+              "key": "use_legacy_network_interface"
+            },
+            {
               "key": "data_security_group"
             },
             {

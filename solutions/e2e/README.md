@@ -105,35 +105,35 @@ statement instead the previous block.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.76.3 |
-| <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.3 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | 3.7.1 |
+| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.85.0 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | 3.7.2 |
 
 ### Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_app_tier_autoscale"></a> [app\_tier\_autoscale](#module\_app\_tier\_autoscale) | github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale | v1.0.3 |
-| <a name="module_data_tier_vsi"></a> [data\_tier\_vsi](#module\_data\_tier\_vsi) | terraform-ibm-modules/landing-zone-vsi/ibm | 4.2.0 |
-| <a name="module_landing_zone"></a> [landing\_zone](#module\_landing\_zone) | git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module | v6.2.1 |
-| <a name="module_private_secret_engine"></a> [private\_secret\_engine](#module\_private\_secret\_engine) | terraform-ibm-modules/secrets-manager-private-cert-engine/ibm | 1.3.4 |
-| <a name="module_secrets_manager_group"></a> [secrets\_manager\_group](#module\_secrets\_manager\_group) | terraform-ibm-modules/secrets-manager-secret-group/ibm | 1.2.2 |
-| <a name="module_secrets_manager_private_certificate"></a> [secrets\_manager\_private\_certificate](#module\_secrets\_manager\_private\_certificate) | terraform-ibm-modules/secrets-manager-private-cert/ibm | 1.3.2 |
-| <a name="module_sm_resource_group"></a> [sm\_resource\_group](#module\_sm\_resource\_group) | terraform-ibm-modules/resource-group/ibm | 1.1.6 |
+| <a name="module_data_tier_vsi"></a> [data\_tier\_vsi](#module\_data\_tier\_vsi) | terraform-ibm-modules/landing-zone-vsi/ibm | 5.17.0 |
+| <a name="module_landing_zone"></a> [landing\_zone](#module\_landing\_zone) | git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module | v8.13.1 |
+| <a name="module_private_secret_engine"></a> [private\_secret\_engine](#module\_private\_secret\_engine) | terraform-ibm-modules/secrets-manager-private-cert-engine/ibm | 1.11.1 |
+| <a name="module_secrets_manager_group"></a> [secrets\_manager\_group](#module\_secrets\_manager\_group) | terraform-ibm-modules/secrets-manager-secret-group/ibm | 1.3.19 |
+| <a name="module_secrets_manager_private_certificate"></a> [secrets\_manager\_private\_certificate](#module\_secrets\_manager\_private\_certificate) | terraform-ibm-modules/secrets-manager-private-cert/ibm | 1.9.2 |
+| <a name="module_sm_resource_group"></a> [sm\_resource\_group](#module\_sm\_resource\_group) | terraform-ibm-modules/resource-group/ibm | 1.4.0 |
 | <a name="module_web_tier_autoscale"></a> [web\_tier\_autoscale](#module\_web\_tier\_autoscale) | github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale | v1.0.3 |
 
 ### Resources
 
 | Name | Type |
 |------|------|
-| [ibm_iam_authorization_policy.s2s_lb_to_sm](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.76.3/docs/resources/iam_authorization_policy) | resource |
-| [ibm_resource_instance.secrets_manager](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.76.3/docs/resources/resource_instance) | resource |
-| [null_resource.primary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.2.3/docs/resources/resource) | resource |
-| [null_resource.secondary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.2.3/docs/resources/resource) | resource |
-| [random_password.password](https://registry.terraform.io/providers/hashicorp/random/3.7.1/docs/resources/password) | resource |
-| [ibm_is_image.app_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.76.3/docs/data-sources/is_image) | data source |
-| [ibm_is_image.data_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.76.3/docs/data-sources/is_image) | data source |
-| [ibm_is_image.web_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.76.3/docs/data-sources/is_image) | data source |
+| [ibm_iam_authorization_policy.s2s_lb_to_sm](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.85.0/docs/resources/iam_authorization_policy) | resource |
+| [ibm_resource_instance.secrets_manager](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.85.0/docs/resources/resource_instance) | resource |
+| [null_resource.primary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
+| [null_resource.secondary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
+| [random_password.password](https://registry.terraform.io/providers/hashicorp/random/3.7.2/docs/resources/password) | resource |
+| [ibm_is_image.app_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.85.0/docs/data-sources/is_image) | data source |
+| [ibm_is_image.data_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.85.0/docs/data-sources/is_image) | data source |
+| [ibm_is_image.web_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.85.0/docs/data-sources/is_image) | data source |
 
 ### Inputs
 
@@ -168,10 +168,11 @@ statement instead the previous block.
 | <a name="input_root_ca_name"></a> [root\_ca\_name](#input\_root\_ca\_name) | The name of the Root CA to create for a private\_cert secret engine. Only used when `var.existing_sm_instance_guid` is `false`. | `string` | `"root-ca"` | no |
 | <a name="input_sample_application"></a> [sample\_application](#input\_sample\_application) | Apply the sample web application to the pattern. | `bool` | `false` | no |
 | <a name="input_sm_instance_rg_existing"></a> [sm\_instance\_rg\_existing](#input\_sm\_instance\_rg\_existing) | Resource group exists in your account already. If set to `true`, you will need to set the variable sm\_instance\_rg\_name | `bool` | `false` | no |
-| <a name="input_sm_instance_rg_name"></a> [sm\_instance\_rg\_name](#input\_sm\_instance\_rg\_name) | Resource group to provison the secrets manager instance.  If no resource group name is defined, it will try to use the service resource group otherwise a random from the landing zone | `string` | `null` | no |
+| <a name="input_sm_instance_rg_name"></a> [sm\_instance\_rg\_name](#input\_sm\_instance\_rg\_name) | Resource group to provision the secrets manager instance.  If no resource group name is defined, it will try to use the service resource group otherwise a random from the landing zone | `string` | `null` | no |
 | <a name="input_sm_service_plan"></a> [sm\_service\_plan](#input\_sm\_service\_plan) | The service/pricing plan to use when provisioning a new Secrets Manager instance. Allowed values: `standard` and `trial`. | `string` | `"standard"` | no |
 | <a name="input_ssh_key"></a> [ssh\_key](#input\_ssh\_key) | Public SSH Key for VSI creation. Must be a valid SSH key that does not already exist in the deployment region. | `string` | n/a | yes |
 | <a name="input_ssh_private_key"></a> [ssh\_private\_key](#input\_ssh\_private\_key) | Private SSH key (RSA format) that is paired with the public ssh key. | `string` | n/a | yes |
+| <a name="input_use_legacy_network_interface"></a> [use\_legacy\_network\_interface](#input\_use\_legacy\_network\_interface) | Set this to true to use legacy network interface for the created instances. | `bool` | `false` | no |
 | <a name="input_use_sm"></a> [use\_sm](#input\_use\_sm) | Whether to use Secrets Manager to generate certificates. | `bool` | `true` | no |
 | <a name="input_web_application_port"></a> [web\_application\_port](#input\_web\_application\_port) | The instance group the web tier uses when scaling up instances to supply the port for the Load Balancer pool member. | `number` | `80` | no |
 | <a name="input_web_block_storage_volumes"></a> [web\_block\_storage\_volumes](#input\_web\_block\_storage\_volumes) | List describing the block storage volumes that will be attached to each vsi | <pre>list(<br/>    object({<br/>      name              = string<br/>      profile           = string<br/>      capacity          = optional(number)<br/>      iops              = optional(number)<br/>      encryption_key    = optional(string)<br/>      resource_group_id = optional(string)<br/>    })<br/>  )</pre> | `[]` | no |

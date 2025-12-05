@@ -41,6 +41,12 @@ variable "ssh_private_key" {
   sensitive   = true
 }
 
+variable "use_legacy_network_interface" {
+  description = "Set this to true to use legacy network interface for the created instances."
+  type        = bool
+  default     = false
+}
+
 ############################################################################
 # Sample web application
 ############################################################################
@@ -73,7 +79,7 @@ variable "existing_sm_instance_region" {
 
 variable "sm_instance_rg_name" {
   type        = string
-  description = "Resource group to provison the secrets manager instance.  If no resource group name is defined, it will try to use the service resource group otherwise a random from the landing zone"
+  description = "Resource group to provision the secrets manager instance.  If no resource group name is defined, it will try to use the service resource group otherwise a random from the landing zone"
   default     = null
 }
 

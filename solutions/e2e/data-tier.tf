@@ -35,7 +35,7 @@ resource "random_password" "password" {
 
 module "data_tier_vsi" {
   source                        = "terraform-ibm-modules/landing-zone-vsi/ibm"
-  version                       = "4.2.0"
+  version                       = "5.17.0"
   resource_group_id             = local.vpc_data.vpc_data.resource_group
   prefix                        = "${var.prefix}-data-vsi"
   vpc_id                        = local.vpc_data.vpc_id
@@ -53,6 +53,7 @@ module "data_tier_vsi" {
   create_security_group         = var.data_security_group != null ? true : false
   security_group                = var.data_security_group
   block_storage_volumes         = local.data_block_storage_volumes_list
+  use_legacy_network_interface  = var.use_legacy_network_interface
 }
 
 resource "null_resource" "primary_postgresql_install" {
