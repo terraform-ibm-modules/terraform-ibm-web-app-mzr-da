@@ -53,6 +53,7 @@ module "data_tier_vsi" {
   create_security_group         = var.data_security_group != null ? true : false
   security_group                = var.data_security_group
   block_storage_volumes         = local.data_block_storage_volumes_list
+  use_legacy_network_interface  = var.use_legacy_network_interface
 }
 
 resource "null_resource" "primary_postgresql_install" {
