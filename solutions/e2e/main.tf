@@ -39,7 +39,7 @@ module "sm_resource_group" {
   count = var.sm_instance_rg_existing || (!var.sm_instance_rg_existing && var.sm_instance_rg_name != null) ? 1 : 0
 
   source  = "terraform-ibm-modules/resource-group/ibm"
-  version = "1.4.0"
+  version = "1.4.2"
 
   resource_group_name          = !var.sm_instance_rg_existing ? var.sm_instance_rg_name : null
   existing_resource_group_name = var.sm_instance_rg_existing ? var.sm_instance_rg_name : null
@@ -85,7 +85,7 @@ module "private_secret_engine" {
 # Create a secret group to place the certificate in
 module "secrets_manager_group" {
   source                   = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
-  version                  = "1.3.19"
+  version                  = "1.3.21"
   count                    = var.use_sm ? 1 : 0
   region                   = local.sm_region
   secrets_manager_guid     = local.sm_guid
