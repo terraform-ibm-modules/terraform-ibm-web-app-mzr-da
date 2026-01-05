@@ -68,6 +68,7 @@
           "name": "standard",
           "install_type": "fullstack",
           "working_directory": "solutions/e2e",
+          "short_description": "Creates a 3-tier multi-zone resilient web application infrastructure to run your workloads on a VPC network",
           "configuration": [
             {
               "key": "prefix",
