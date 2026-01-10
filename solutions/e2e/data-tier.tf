@@ -35,7 +35,7 @@ resource "random_password" "password" {
 
 module "data_tier_vsi" {
   source                        = "terraform-ibm-modules/landing-zone-vsi/ibm"
-  version                       = "5.20.14"
+  version                       = "5.20.16"
   resource_group_id             = local.vpc_data.vpc_data.resource_group
   prefix                        = "${var.prefix}-data-vsi"
   vpc_id                        = local.vpc_data.vpc_id
