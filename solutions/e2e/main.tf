@@ -7,7 +7,7 @@
 ##############################################################################
 
 module "landing_zone" {
-  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module?ref=v8.14.12"
+  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module?ref=v8.14.14"
   prefix               = var.prefix
   region               = var.region
   ssh_public_key       = var.ssh_key
