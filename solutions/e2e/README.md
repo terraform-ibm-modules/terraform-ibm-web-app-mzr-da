@@ -114,7 +114,7 @@ statement instead the previous block.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_app_tier_autoscale"></a> [app\_tier\_autoscale](#module\_app\_tier\_autoscale) | github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale | v1.0.12 |
-| <a name="module_data_tier_vsi"></a> [data\_tier\_vsi](#module\_data\_tier\_vsi) | terraform-ibm-modules/landing-zone-vsi/ibm | 5.20.16 |
+| <a name="module_data_tier_vsi"></a> [data\_tier\_vsi](#module\_data\_tier\_vsi) | terraform-ibm-modules/landing-zone-vsi/ibm | 5.20.17 |
 | <a name="module_landing_zone"></a> [landing\_zone](#module\_landing\_zone) | git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module | v8.14.12 |
 | <a name="module_private_secret_engine"></a> [private\_secret\_engine](#module\_private\_secret\_engine) | terraform-ibm-modules/secrets-manager-private-cert-engine/ibm | 1.12.8 |
 | <a name="module_secrets_manager_group"></a> [secrets\_manager\_group](#module\_secrets\_manager\_group) | terraform-ibm-modules/secrets-manager-secret-group/ibm | 1.3.36 |
