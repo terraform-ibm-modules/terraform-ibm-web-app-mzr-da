@@ -2,6 +2,7 @@
 package test
 
 import (
+	"log"
 	"os"
 	"strings"
 	"testing"
