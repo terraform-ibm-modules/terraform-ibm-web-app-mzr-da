@@ -7,7 +7,7 @@
 ##############################################################################
 
 module "landing_zone" {
-  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module?ref=v8.14.16"
+  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module?ref=v8.14.17"
   prefix               = var.prefix
   region               = var.region
   ssh_public_key       = var.ssh_key
@@ -100,7 +100,7 @@ module "secrets_manager_group" {
 module "secrets_manager_private_certificate" {
   depends_on             = [module.private_secret_engine]
   source                 = "terraform-ibm-modules/secrets-manager-private-cert/ibm"
-  version                = "1.10.18"
+  version                = "1.10.19"
   count                  = var.use_sm ? 1 : 0
   cert_name              = "${var.prefix}-cts-vpn-private-cert"
   cert_description       = "Example private cert"
