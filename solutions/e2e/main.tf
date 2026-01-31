@@ -68,7 +68,7 @@ module "private_secret_engine" {
   depends_on                = [ibm_resource_instance.secrets_manager]
   count                     = (var.use_sm && var.existing_sm_instance_guid == null) ? 1 : 0
   source                    = "terraform-ibm-modules/secrets-manager-private-cert-engine/ibm"
-  version                   = "1.12.12"
+  version                   = "1.12.13"
   secrets_manager_guid      = local.sm_guid
   region                    = local.sm_region
   root_ca_name              = var.root_ca_name
