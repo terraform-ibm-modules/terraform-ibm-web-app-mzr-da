@@ -7,7 +7,7 @@
 ##############################################################################
 
 module "landing_zone" {
-  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module?ref=v8.14.17"
+  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module?ref=v8.14.18"
   prefix               = var.prefix
   region               = var.region
   ssh_public_key       = var.ssh_key
@@ -85,7 +85,7 @@ module "private_secret_engine" {
 # Create a secret group to place the certificate in
 module "secrets_manager_group" {
   source                   = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
-  version                  = "1.3.39"
+  version                  = "1.4.1"
   count                    = var.use_sm ? 1 : 0
   region                   = local.sm_region
   secrets_manager_guid     = local.sm_guid
