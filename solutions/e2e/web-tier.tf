@@ -36,7 +36,7 @@ data "ibm_is_image" "web_is_image" {
 
 module "web_tier_autoscale" {
   depends_on                    = [ibm_iam_authorization_policy.s2s_lb_to_sm]
-  source                        = "github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale?ref=v1.0.12"
+  source                        = "github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale?ref=v1.0.14"
   prefix                        = "${var.prefix}-web-tier"
   resource_group_id             = local.vpc_data.vpc_data.resource_group
   zone                          = "${var.region}-1"
