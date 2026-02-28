@@ -105,7 +105,7 @@ statement instead the previous block.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.88.2 |
+| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.88.3 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | 3.8.1 |
 
@@ -114,7 +114,7 @@ statement instead the previous block.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_app_tier_autoscale"></a> [app\_tier\_autoscale](#module\_app\_tier\_autoscale) | github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale | v1.0.14 |
-| <a name="module_data_tier_vsi"></a> [data\_tier\_vsi](#module\_data\_tier\_vsi) | terraform-ibm-modules/landing-zone-vsi/ibm | 6.1.2 |
+| <a name="module_data_tier_vsi"></a> [data\_tier\_vsi](#module\_data\_tier\_vsi) | terraform-ibm-modules/landing-zone-vsi/ibm | 6.2.1 |
 | <a name="module_landing_zone"></a> [landing\_zone](#module\_landing\_zone) | git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module | v8.15.2 |
 | <a name="module_private_secret_engine"></a> [private\_secret\_engine](#module\_private\_secret\_engine) | terraform-ibm-modules/secrets-manager-private-cert-engine/ibm | 1.13.3 |
 | <a name="module_secrets_manager_group"></a> [secrets\_manager\_group](#module\_secrets\_manager\_group) | terraform-ibm-modules/secrets-manager-secret-group/ibm | 1.4.6 |
@@ -126,14 +126,14 @@ statement instead the previous block.
 
 | Name | Type |
 |------|------|
-| [ibm_iam_authorization_policy.s2s_lb_to_sm](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.88.2/docs/resources/iam_authorization_policy) | resource |
-| [ibm_resource_instance.secrets_manager](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.88.2/docs/resources/resource_instance) | resource |
+| [ibm_iam_authorization_policy.s2s_lb_to_sm](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.88.3/docs/resources/iam_authorization_policy) | resource |
+| [ibm_resource_instance.secrets_manager](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.88.3/docs/resources/resource_instance) | resource |
 | [null_resource.primary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.secondary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [random_password.password](https://registry.terraform.io/providers/hashicorp/random/3.8.1/docs/resources/password) | resource |
-| [ibm_is_image.app_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.88.2/docs/data-sources/is_image) | data source |
-| [ibm_is_image.data_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.88.2/docs/data-sources/is_image) | data source |
-| [ibm_is_image.web_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.88.2/docs/data-sources/is_image) | data source |
+| [ibm_is_image.app_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.88.3/docs/data-sources/is_image) | data source |
+| [ibm_is_image.data_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.88.3/docs/data-sources/is_image) | data source |
+| [ibm_is_image.web_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/1.88.3/docs/data-sources/is_image) | data source |
 
 ### Inputs
 
