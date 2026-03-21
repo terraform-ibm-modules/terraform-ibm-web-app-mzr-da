@@ -7,7 +7,7 @@
 ##############################################################################
 
 module "landing_zone" {
-  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module?ref=v8.15.9"
+  source               = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module?ref=v8.15.11"
   prefix               = var.prefix
   region               = var.region
   ssh_public_key       = var.ssh_key
@@ -39,7 +39,7 @@ module "sm_resource_group" {
   count = var.sm_instance_rg_existing || (!var.sm_instance_rg_existing && var.sm_instance_rg_name != null) ? 1 : 0
 
   source  = "terraform-ibm-modules/resource-group/ibm"
-  version = "1.4.8"
+  version = "1.5.0"
 
   resource_group_name          = !var.sm_instance_rg_existing ? var.sm_instance_rg_name : null
   existing_resource_group_name = var.sm_instance_rg_existing ? var.sm_instance_rg_name : null
