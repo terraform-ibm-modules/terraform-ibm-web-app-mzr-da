@@ -103,42 +103,42 @@ statement instead the previous block.
 ### Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 2.0.2 |
-| <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | 3.8.1 |
+| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 2.7.0 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | 3.3.2 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | 3.9.1 |
 
 ### Modules
 
 | Name | Source | Version |
-|------|--------|---------|
-| <a name="module_app_tier_autoscale"></a> [app\_tier\_autoscale](#module\_app\_tier\_autoscale) | github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale | v1.1.0 |
-| <a name="module_data_tier_vsi"></a> [data\_tier\_vsi](#module\_data\_tier\_vsi) | terraform-ibm-modules/landing-zone-vsi/ibm | 6.3.1 |
-| <a name="module_landing_zone"></a> [landing\_zone](#module\_landing\_zone) | git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module | v8.16.2 |
-| <a name="module_private_secret_engine"></a> [private\_secret\_engine](#module\_private\_secret\_engine) | terraform-ibm-modules/secrets-manager-private-cert-engine/ibm | 1.14.1 |
-| <a name="module_secrets_manager_group"></a> [secrets\_manager\_group](#module\_secrets\_manager\_group) | terraform-ibm-modules/secrets-manager-secret-group/ibm | 1.5.0 |
-| <a name="module_secrets_manager_private_certificate"></a> [secrets\_manager\_private\_certificate](#module\_secrets\_manager\_private\_certificate) | terraform-ibm-modules/secrets-manager-private-cert/ibm | 1.12.1 |
-| <a name="module_sm_resource_group"></a> [sm\_resource\_group](#module\_sm\_resource\_group) | terraform-ibm-modules/resource-group/ibm | 1.6.0 |
-| <a name="module_web_tier_autoscale"></a> [web\_tier\_autoscale](#module\_web\_tier\_autoscale) | github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale | v1.1.0 |
+| ---- | ------ | ------- |
+| <a name="module_app_tier_autoscale"></a> [app\_tier\_autoscale](#module\_app\_tier\_autoscale) | github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale | v1.10.0 |
+| <a name="module_data_tier_vsi"></a> [data\_tier\_vsi](#module\_data\_tier\_vsi) | terraform-ibm-modules/landing-zone-vsi/ibm | 8.2.1 |
+| <a name="module_landing_zone"></a> [landing\_zone](#module\_landing\_zone) | git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone.git//patterns/vsi/module | v8.22.5 |
+| <a name="module_private_secret_engine"></a> [private\_secret\_engine](#module\_private\_secret\_engine) | terraform-ibm-modules/secrets-manager-private-cert-engine/ibm | 2.0.8 |
+| <a name="module_secrets_manager_group"></a> [secrets\_manager\_group](#module\_secrets\_manager\_group) | terraform-ibm-modules/secrets-manager-secret-group/ibm | 1.5.8 |
+| <a name="module_secrets_manager_private_certificate"></a> [secrets\_manager\_private\_certificate](#module\_secrets\_manager\_private\_certificate) | terraform-ibm-modules/secrets-manager-private-cert/ibm | 1.12.13 |
+| <a name="module_sm_resource_group"></a> [sm\_resource\_group](#module\_sm\_resource\_group) | terraform-ibm-modules/resource-group/ibm | 1.6.1 |
+| <a name="module_web_tier_autoscale"></a> [web\_tier\_autoscale](#module\_web\_tier\_autoscale) | github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi-autoscale | v1.10.0 |
 
 ### Resources
 
 | Name | Type |
-|------|------|
-| [ibm_iam_authorization_policy.s2s_lb_to_sm](https://registry.terraform.io/providers/IBM-Cloud/ibm/2.0.2/docs/resources/iam_authorization_policy) | resource |
-| [ibm_resource_instance.secrets_manager](https://registry.terraform.io/providers/IBM-Cloud/ibm/2.0.2/docs/resources/resource_instance) | resource |
-| [null_resource.primary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
-| [null_resource.secondary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
-| [random_password.password](https://registry.terraform.io/providers/hashicorp/random/3.8.1/docs/resources/password) | resource |
-| [ibm_is_image.app_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/2.0.2/docs/data-sources/is_image) | data source |
-| [ibm_is_image.data_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/2.0.2/docs/data-sources/is_image) | data source |
-| [ibm_is_image.web_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/2.0.2/docs/data-sources/is_image) | data source |
+| ---- | ---- |
+| [ibm_iam_authorization_policy.s2s_lb_to_sm](https://registry.terraform.io/providers/IBM-Cloud/ibm/2.7.0/docs/resources/iam_authorization_policy) | resource |
+| [ibm_resource_instance.secrets_manager](https://registry.terraform.io/providers/IBM-Cloud/ibm/2.7.0/docs/resources/resource_instance) | resource |
+| [null_resource.primary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.3.2/docs/resources/resource) | resource |
+| [null_resource.secondary_postgresql_install](https://registry.terraform.io/providers/hashicorp/null/3.3.2/docs/resources/resource) | resource |
+| [random_password.password](https://registry.terraform.io/providers/hashicorp/random/3.9.1/docs/resources/password) | resource |
+| [ibm_is_image.app_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/2.7.0/docs/data-sources/is_image) | data source |
+| [ibm_is_image.data_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/2.7.0/docs/data-sources/is_image) | data source |
+| [ibm_is_image.web_is_image](https://registry.terraform.io/providers/IBM-Cloud/ibm/2.7.0/docs/data-sources/is_image) | data source |
 
 ### Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_app_application_port"></a> [app\_application\_port](#input\_app\_application\_port) | The instance group the application tier uses when scaling up instances to supply the port for the Load Balancer pool member. | `number` | `3000` | no |
 | <a name="input_app_block_storage_volumes"></a> [app\_block\_storage\_volumes](#input\_app\_block\_storage\_volumes) | List describing the block storage volumes that will be attached to each vsi | <pre>list(<br/>    object({<br/>      name              = string<br/>      profile           = string<br/>      capacity          = optional(number)<br/>      iops              = optional(number)<br/>      encryption_key    = optional(string)<br/>      resource_group_id = optional(string)<br/>    })<br/>  )</pre> | `[]` | no |
 | <a name="input_app_boot_volume_encryption_key_suffix"></a> [app\_boot\_volume\_encryption\_key\_suffix](#input\_app\_boot\_volume\_encryption\_key\_suffix) | App tier boot volume encryption key suffix | `string` | `"vsi-volume-key"` | no |
@@ -187,7 +187,7 @@ statement instead the previous block.
 ### Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_landing_zone"></a> [landing\_zone](#output\_landing\_zone) | Landing zone configuration |
 | <a name="output_vpc_data"></a> [vpc\_data](#output\_vpc\_data) | Landing zone vpc data |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
