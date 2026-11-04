@@ -11,6 +11,7 @@ module "landing_zone" {
   prefix               = var.prefix
   region               = var.region
   ssh_public_key       = var.ssh_key
+  kms_endpoint_type    = "public"
   override_json_string = templatefile("${path.module}/override.tftpl", { prefix = var.prefix, use_legacy_network_interface = var.use_legacy_network_interface })
 }
 
